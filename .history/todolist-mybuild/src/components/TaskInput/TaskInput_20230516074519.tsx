@@ -1,0 +1,38 @@
+import React from 'react'
+import { useState } from 'react'
+
+interface ITaskInputProps {
+  addTodo: (name: string) => void
+}
+
+const TaskInput = (props: ITaskInputProps) => {
+  const { addTodo } = props
+
+  const [name, setName] = useState<string>('')
+
+  const handleSubmit = () => {
+    addTodo(name)
+  }
+
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {}
+
+  return (
+    <div className='mb-2'>
+      <h1 className='mb-4 text-lg font-bold text-white text-[20px] text-center'>Todo list typescript</h1>
+      <form placeholder='enter your text' onSubmit={handleSubmit}>
+        <input
+          className='p-2 mr-4 rounded-md outline-0'
+          type='text'
+          placeholder='caption gose here'
+          value={name}
+          onChange={onChangeInput}
+        />
+        <button type='submit' className='p-1 border-2 border-white rounded-md'>
+          ➕
+        </button>
+      </form>
+    </div>
+  )
+}
+
+export default TaskInput
